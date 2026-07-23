@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>環保稽查數位紀錄系統｜稽查員操作說明</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f2328;--sub:#6b7178;--line:#e0e2e6;--line-d:#c4c8ce;--paper:#f4f5f7;--card:#fff;
+  --blue:#1d5fd6;--blue-d:#164bad;--red:#c33a2e;--dark:#2b2f36;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Noto Sans TC",system-ui,"PingFang TC","Microsoft JhengHei",sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
+.sheet{max-width:900px;margin:0 auto;background:var(--card);padding:34px 30px 46px}
+
+/* 抬頭 */
+.mast{border-bottom:3px solid var(--dark);padding-bottom:16px;margin-bottom:26px}
+.mast .org{font-size:12px;letter-spacing:3px;color:var(--sub)}
+.mast h1{font-family:"Noto Serif TC",serif;font-size:27px;margin:6px 0 4px;letter-spacing:1px}
+.mast .lede{font-size:14.5px;color:var(--sub);margin:0}
+.mast .meta{margin-top:12px;font-size:12px;color:var(--sub);display:flex;gap:18px;flex-wrap:wrap}
+.mast .meta b{color:var(--ink)}
+
+h2{font-family:"Noto Serif TC",serif;font-size:19px;margin:34px 0 12px;padding-bottom:7px;border-bottom:2px solid var(--ink)}
+h3{font-size:15px;margin:20px 0 6px}
+p{margin:0 0 10px}
+.small{font-size:13px;color:var(--sub)}
+
+/* 流程圖 */
+.flowwrap{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 14px;margin:14px 0 6px}
+.flowwrap svg{width:100%;height:auto;display:block}
+
+/* 步驟卡 */
+.steps{display:grid;gap:12px;margin-top:14px}
+.step{display:grid;grid-template-columns:38px 1fr;gap:14px;border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:var(--card)}
+.step .no{width:38px;height:38px;border-radius:50%;background:var(--dark);color:#fff;display:grid;place-items:center;font-weight:900;font-size:15px}
+.step h4{margin:2px 0 5px;font-size:16px}
+.step p{margin:0 0 6px;font-size:14px}
+.step ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+.step li{margin-bottom:4px}
+
+/* 元件示意 */
+.btn{display:inline-block;background:var(--blue);color:#fff;border-radius:8px;padding:3px 12px;font-size:13px;font-weight:700;white-space:nowrap}
+.btn.g{background:var(--paper);color:var(--ink);border:1px solid var(--line-d)}
+.chip{display:inline-block;border:1px solid var(--line-d);border-radius:20px;padding:2px 11px;font-size:12.5px;background:var(--card);white-space:nowrap}
+.badge{display:inline-block;background:var(--red);color:#fff;border-radius:20px;padding:1px 9px;font-size:11px;font-weight:700}
+kbd{border:1px solid var(--line-d);border-bottom-width:2px;border-radius:6px;padding:1px 7px;font-size:12.5px;background:var(--paper);font-family:inherit}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--paper);font-weight:700;white-space:nowrap}
+
+/* 提示框 */
+.note{border-left:4px solid var(--blue);background:#f5f8fe;padding:12px 15px;border-radius:0 8px 8px 0;font-size:14px;margin:12px 0}
+.warn{border-left:4px solid var(--red);background:#fdf5f4;padding:12px 15px;border-radius:0 8px 8px 0;font-size:14px;margin:12px 0}
+.note b,.warn b{display:block;margin-bottom:3px}
+
+/* 必拍清單 */
+.reqtable td:first-child{white-space:nowrap;font-weight:700}
+
+/* 小抄 */
+.cheat{margin-top:38px;border:2px dashed var(--line-d);border-radius:12px;padding:18px 20px;background:var(--paper)}
+.cheat h2{margin-top:0;border:0;padding:0;font-size:17px}
+.cheat ol{margin:8px 0 0;padding-left:22px;font-size:14px}
+.cheat ol li{margin-bottom:5px}
+
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+
+@media (max-width:640px){
+  .sheet{padding:22px 16px 34px}
+  .mast h1{font-size:22px}
+  .step{grid-template-columns:32px 1fr;gap:11px}
+  .step .no{width:32px;height:32px;font-size:14px}
+}
+@media print{
+  body{background:#fff}
+  .sheet{max-width:none;padding:0}
+  h2{page-break-after:avoid}
+  .step,.cheat,table{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="mast">
+    <div class="org">嘉義市政府環境保護局</div>
+    <h1>環保稽查數位紀錄系統　稽查員操作說明</h1>
+    <p class="lede">用手機完成稽查：填單、拍照、簽名，一鍵產出 PDF 並自動回傳彙整表。不用再帶紙本。</p>
+    <div class="meta">
+      <span>適用裝置：<b>手機、平板、電腦</b></span>
+      <span>目前可用稽查單：<b>12 種</b></span>
+      <span>現場沒訊號：<b>照常可用</b></span>
+    </div>
+  </div>
+
+  <h2>一、整體流程只有六步</h2>
+  <div class="flowwrap">
+    <svg viewBox="0 0 880 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="六步流程：選稽查員、選稽查單、現場稽查、照片、簽名、完成">
+      <defs>
+        <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,1 L7,4.5 L0,8" fill="none" stroke="#c4c8ce" stroke-width="1.6"/>
+        </marker>
+      </defs>
+      <g font-family="Noto Sans TC, sans-serif">
+        <!-- 六個節點 -->
+        <g>
+          <circle cx="62" cy="52" r="26" fill="#2b2f36"/>
+          <text x="62" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">1</text>
+          <text x="62" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">選稽查員</text>
+          <text x="62" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">輸入登入碼</text>
+        </g>
+        <line x1="94" y1="52" x2="130" y2="52" stroke="#c4c8ce" stroke-width="1.6" marker-end="url(#ar)"/>
+        <g>
+          <circle cx="196" cy="52" r="26" fill="#2b2f36"/>
+          <text x="196" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">2</text>
+          <text x="196" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">選稽查單</text>
+          <text x="196" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">12 種可選</text>
+        </g>
+        <line x1="228" y1="52" x2="264" y2="52" stroke="#c4c8ce" stroke-width="1.6" marker-end="url(#ar)"/>
+        <g>
+          <circle cx="330" cy="52" r="26" fill="#2b2f36"/>
+          <text x="330" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">3</text>
+          <text x="330" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">現場稽查</text>
+          <text x="330" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">填基本資料與勾選</text>
+        </g>
+        <line x1="362" y1="52" x2="398" y2="52" stroke="#c4c8ce" stroke-width="1.6" marker-end="url(#ar)"/>
+        <g>
+          <circle cx="464" cy="52" r="26" fill="#2b2f36"/>
+          <text x="464" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">4</text>
+          <text x="464" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">照片</text>
+          <text x="464" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">拍照或選圖</text>
+        </g>
+        <line x1="496" y1="52" x2="532" y2="52" stroke="#c4c8ce" stroke-width="1.6" marker-end="url(#ar)"/>
+        <g>
+          <circle cx="598" cy="52" r="26" fill="#2b2f36"/>
+          <text x="598" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">5</text>
+          <text x="598" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1f2328">簽名</text>
+          <text x="598" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">雙方簽署</text>
+        </g>
+        <line x1="630" y1="52" x2="666" y2="52" stroke="#c4c8ce" stroke-width="1.6" marker-end="url(#ar)"/>
+        <g>
+          <circle cx="740" cy="52" r="30" fill="#1d5fd6"/>
+          <text x="740" y="60" text-anchor="middle" fill="#fff" font-size="20" font-weight="900">6</text>
+          <text x="740" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1d5fd6">完成</text>
+          <text x="740" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">產出 PDF ＋ 同步</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <p class="small">畫面最上方一直有這條步驟列，做到哪一步、還剩幾步，一看就知道。想回頭改按 <span class="btn g">上一步</span> 就好，填過的不會消失。</p>
+
+  <h2>二、每一步怎麼做</h2>
+  <div class="steps">
+
+    <div class="step">
+      <div class="no">1</div>
+      <div>
+        <h4>選稽查員，輸入自己的登入碼</h4>
+        <p>在名單中點自己的名字，輸入 4～8 位登入碼。登入碼是為了避免別人用你的名字署名。</p>
+        <ul>
+          <li>名單上沒有你 → 點最下面 <span class="btn g">＋ 新增稽查員</span>，填姓名並自己設一組登入碼。</li>
+          <li>要改名字或換登入碼 → 點名字右側的 <kbd>⚙︎</kbd>，先輸入目前的登入碼即可修改，也可以刪除。</li>
+          <li>名單是所有裝置共用的，你在手機新增，電腦也看得到。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">2</div>
+      <div>
+        <h4>選這次要用的稽查單</h4>
+        <p>清單裡有 12 種可用的稽查單，可用上方搜尋框打關鍵字找（例如打「飲料」）。灰色標示「建置中」的是還沒開放的。</p>
+        <ul>
+          <li><b>塑膠製品這張比較特別：</b>進去要先選「本次稽查類型」（塑膠袋／塑膠類免洗餐具／各類免洗餐具／塑膠吸管），選了之後才會顯示那一種的管制對象和項目，不用看其他三種。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">3</div>
+      <div>
+        <h4>填現場稽查內容</h4>
+        <p>依稽查單勾選、填寫。名稱（或地點）是必填，沒填不能往下一步。</p>
+        <ul>
+          <li><b>稽查時間免手動：</b>系統會自動抓你現場第一張照片的拍攝時間當稽查時間。需要調整的話，這一頁最上面的時間欄位可以直接改。</li>
+          <li><b>可以在公司先做好：</b>先把基本資料填好，按底部 <span class="btn g">暫存</span>，資料會上雲端。出門後手機登入同一位稽查員就能接著填。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">4</div>
+      <div>
+        <h4>拍照，或用文字代替</h4>
+        <p>點任一照片格，會出現兩個選擇：</p>
+        <ul>
+          <li><span class="btn">拍照 / 選取照片</span>　按下去手機會問你要「開相機拍」還是「從相簿挑」。</li>
+          <li><span class="btn g">改用文字說明</span>　真的沒東西可拍時用（例：現場無販售、大門深鎖、拒絕拍攝）。文字會印在 PDF 照片頁上。</li>
+        </ul>
+        <p style="margin-top:8px">照片右下角會<b>自動蓋上拍攝時間</b>（有開定位就一併記座標），是燒進照片裡的，事後改不掉。每格下方還可填「備註」補充說明這張照片。</p>
+        <p style="margin:8px 0 0"><span class="badge">必拍</span> 有紅色標記的是一定要完成的，缺了不能進到簽名那一步。拍不到就用「改用文字說明」交代原因。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">5</div>
+      <div>
+        <h4>雙方簽名</h4>
+        <p>用手指或觸控筆直接在框內簽。稽查對象那一欄，遇到狀況有三種替代方式：</p>
+        <ul>
+          <li><span class="chip">拒簽</span>　對方明確拒絕簽名。</li>
+          <li><span class="chip">現場人員未簽</span>　現場的人無權簽或不在。</li>
+          <li><span class="chip">拍店章</span>　拍店章或發票章當憑證，照片會直接放進 PDF 的簽名欄。</li>
+        </ul>
+        <p class="small" style="margin-top:6px">簽錯了按 <span class="chip">清除</span> 重簽；拍錯章按「重新簽名／改拍」換掉。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="no">6</div>
+      <div>
+        <h4>確認後產出</h4>
+        <p>核對摘要沒問題，按 <span class="btn">產出 PDF 並同步</span>。系統會做三件事：</p>
+        <ul>
+          <li>把稽查單和照片合成<b>一份 PDF</b>（不會拆成兩個檔）。</li>
+          <li>上傳到雲端硬碟，照片原檔另存一個資料夾。</li>
+          <li>把這筆資料寫進 Google 試算表，供後續統計。</li>
+        </ul>
+        <p style="margin-top:8px">檔名會自動組好，例如：<br>
+        <span class="chip">飲料杯-測試股份有限公司-1150723-胡翊穜.pdf</span><br>
+        <span class="small">格式為「稽查單簡稱-稽查對象-日期-稽查員」。</span></p>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>三、必拍照片一覽</h2>
+  <p class="small">下表是各稽查單一定要完成的照片欄位（標 <span class="badge">必拍</span> 者）。其他欄位為選填，有拍更完整。</p>
+  <table class="reqtable">
+    <tr><th>稽查單</th><th>必拍項目</th></tr>
+    <tr><td>飲料杯</td><td>大門外觀、飲料杯樣式</td></tr>
+    <tr><td>旅宿用品</td><td>大門外觀、不提供一次用旅宿用品標語、客房現況、客房衛浴現況（一）</td></tr>
+    <tr><td>化粧品</td><td>店家外觀、產品成分標示</td></tr>
+    <tr><td>破袋</td><td>稽查地點、稽查情形</td></tr>
+    <tr><td>資源回收</td><td>外觀、資源回收設施、回收筒標示</td></tr>
+    <tr><td>含汞產品</td><td>外觀、陳列或庫存現況</td></tr>
+    <tr><td>過度包裝</td><td>外觀</td></tr>
+    <tr><td>塑膠托盤</td><td>外觀、包裝陳列現況</td></tr>
+    <tr><td>乾電池</td><td>外觀、電池陳列</td></tr>
+    <tr><td>塑膠製品</td><td>店家外觀、稽查項目現況</td></tr>
+    <tr><td>PVC容器</td><td>外觀、商品陳列</td></tr>
+    <tr><td>網購包裝</td><td>外箱照片、產品裝箱樣態（含緩衝材）、產品裝箱樣態（不含緩衝材）、包材陳列照片</td></tr>
+  </table>
+
+  <h2>四、暫存與紀錄查詢</h2>
+  <p>右上角 <kbd>📁</kbd> 打開後有兩個分頁：</p>
+  <table>
+    <tr><th>暫存草稿</th><td>還沒完成的單。點「繼續」接著填。上方有 <span class="btn g">⬇︎ 下載雲端草稿到本機</span>，<b>出門前按一下</b>，之後沒訊號也開得起來。</td></tr>
+    <tr><th>已完成</th><td>做完的紀錄。可開雲端 PDF，或重新產一份 PDF。</td></tr>
+  </table>
+  <p class="small">每筆會標「雲端」或「本機」，讓你分辨這筆有沒有同步上去。</p>
+
+  <div class="note">
+    <b>換手機、換電腦都接得上</b>
+    在公司電腦建的單按過「暫存」，手機登入<b>同一位稽查員</b>就看得到，可以直接接著填。做完的紀錄也一樣，任何裝置都查得到。
+  </div>
+
+  <h2>五、現場沒訊號怎麼辦</h2>
+  <p>照常用就好，填單、拍照、簽名、產 PDF 全部可以離線完成，PDF 會存到手機裡。</p>
+  <div class="warn">
+    <b>回到有訊號時要補做一件事</b>
+    離線完成的單，系統會<b>幫你保留草稿</b>。回到有網路的地方，開 <kbd>📁</kbd> → 找到那一筆 → 點「繼續」 → 再按一次 <span class="btn">產出 PDF 並同步</span>，資料才會上傳到試算表和雲端硬碟。
+  </div>
+  <p class="small">建議習慣：出門前按一次「下載雲端草稿到本機」，回辦公室前確認 📁 裡沒有還沒同步的單。</p>
+
+  <h2>六、常見狀況</h2>
+  <table>
+    <tr><th>忘記登入碼</th><td>請系統管理人員（胡翊穜）用 ⚙︎ 重設，或直接新增一組新的稽查員。</td></tr>
+    <tr><th>拍照拍歪了、拍錯</th><td>點照片右上角 <kbd>✕</kbd> 刪掉重拍。</td></tr>
+    <tr><th>照片格用不到</th><td>非必拍的可以留空，不影響產出。</td></tr>
+    <tr><th>要多拍幾張</th><td>照片頁最下面按 <span class="btn g">＋ 新增欄位</span>，可加任意張數，記得填備註說明拍的是什麼。</td></tr>
+    <tr><th>按了完成但沒同步</th><td>畫面會顯示「已在本機產出」，代表當下沒連上。照上面第五點回訊號後補送即可。</td></tr>
+    <tr><th>填錯要重來</th><td>按 <span class="btn g">上一步</span> 回去改。整張要放棄就回稽查單清單重新選一張。</td></tr>
+  </table>
+
+  <div class="cheat">
+    <h2>現場小抄</h2>
+    <ol>
+      <li>登入自己的名字 → 輸入登入碼</li>
+      <li>選稽查單（塑膠製品要先選類型）</li>
+      <li>填單，名稱／地點必填</li>
+      <li>拍照，紅色<span class="badge">必拍</span>不能缺；拍不到就改文字說明</li>
+      <li>雙方簽名，對方不簽就用「拒簽／未簽／拍店章」</li>
+      <li>按「產出 PDF 並同步」，看到 ✅ 才算完成</li>
+    </ol>
+    <p class="small" style="margin:10px 0 0"><b>出門前：</b>📁 按「下載雲端草稿到本機」。<b>收工前：</b>檢查 📁 沒有未同步的單。</p>
+  </div>
+
+  <footer>
+    嘉義市政府環境保護局　源頭減量及強化分類回收計畫　│　系統操作問題請洽計畫組　胡翊穜
+  </footer>
+
+</div>
+</body>
+</html>
