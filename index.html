@@ -58,7 +58,7 @@ th{background:var(--paper);font-weight:700;white-space:nowrap}
 /* 提示框 */
 .note{border-left:4px solid var(--blue);background:#f5f8fe;padding:12px 15px;border-radius:0 8px 8px 0;font-size:14px;margin:12px 0}
 .warn{border-left:4px solid var(--red);background:#fdf5f4;padding:12px 15px;border-radius:0 8px 8px 0;font-size:14px;margin:12px 0}
-.note b,.warn b{display:block;margin-bottom:3px}
+.note>b:first-child,.warn>b:first-child{display:block;margin-bottom:3px}
 
 /* 必拍清單 */
 .reqtable td:first-child{white-space:nowrap;font-weight:700}
@@ -91,12 +91,22 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
   <div class="mast">
     <div class="org">嘉義市政府環境保護局</div>
     <h1>環保稽查數位紀錄系統　稽查員操作說明</h1>
-    <p class="lede">用手機完成稽查：填單、拍照、簽名，一鍵產出 PDF 並自動回傳彙整表。不用再帶紙本。</p>
+    <p class="lede">用手機完成稽查：填單、拍照、簽名，產出 PDF 後給店家掃 QR Code 取得電子檔，資料自動在背景上傳彙整表。不用再帶紙本。</p>
     <div class="meta">
       <span>適用裝置：<b>手機、平板、電腦</b></span>
       <span>目前可用稽查單：<b>12 種</b></span>
       <span>現場沒訊號：<b>照常可用</b></span>
+      <span>表單版本：<b>115.09（資源循環推動法）</b></span>
     </div>
+  </div>
+
+  <div class="note">
+    <b>這一版有什麼不一樣（115 年 10 月更新）</b>
+    ① 稽查單條文已全部改為<b>資源循環推動法</b>；「限制使用稽查記錄單」改版（見第二步）。<br>
+    ② 按完成後<b>馬上出現 QR Code</b>，給店家掃就能下載這次的稽查紀錄 PDF，<b>15 天內有效</b>。<br>
+    ③ 上傳改成<b>背景進行</b>，不用等，可以直接做下一家；沒訊號時會自動補傳，不用再回頭開草稿重送。<br>
+    ④ PDF 字體放大為 12pt，內容多時會自動分頁。<br>
+    ⑤ 新增稽查員改由管理人員處理；登入一次可用 7 天。
   </div>
 
   <h2>一、整體流程只有六步</h2>
@@ -108,7 +118,6 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
         </marker>
       </defs>
       <g font-family="Noto Sans TC, sans-serif">
-        <!-- 六個節點 -->
         <g>
           <circle cx="62" cy="52" r="26" fill="#2b2f36"/>
           <text x="62" y="59" text-anchor="middle" fill="#fff" font-size="19" font-weight="900">1</text>
@@ -148,7 +157,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
           <circle cx="740" cy="52" r="30" fill="#1d5fd6"/>
           <text x="740" y="60" text-anchor="middle" fill="#fff" font-size="20" font-weight="900">6</text>
           <text x="740" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#1d5fd6">完成</text>
-          <text x="740" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">產出 PDF ＋ 同步</text>
+          <text x="740" y="120" text-anchor="middle" font-size="11.5" fill="#6b7178">PDF＋QR，背景上傳</text>
         </g>
       </g>
     </svg>
@@ -162,11 +171,14 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
       <div class="no">1</div>
       <div>
         <h4>選稽查員，輸入自己的登入碼</h4>
-        <p>在名單中點自己的名字，輸入 4～8 位登入碼。登入碼是為了避免別人用你的名字署名。</p>
+        <p>在名單中點自己的名字，輸入 4～8 位登入碼。登入碼是為了避免別人用你的名字署名，<b>請勿告訴他人</b>。</p>
         <ul>
-          <li>名單上沒有你 → 點最下面 <span class="btn g">＋ 新增稽查員</span>，填姓名並自己設一組登入碼。</li>
-          <li>要改名字或換登入碼 → 點名字右側的 <kbd>⚙︎</kbd>，先輸入目前的登入碼即可修改，也可以刪除。</li>
-          <li>名單是所有裝置共用的，你在手機新增，電腦也看得到。</li>
+          <li><b>每支手機、每台電腦第一次登入要有網路。</b>登入過一次後，這台裝置之後沒訊號也能登入。</li>
+          <li>登入一次可用 <b>7 天</b>。過期時會跳出「登入已逾時」，重新輸入登入碼即可，沒傳完的資料會自動接著傳。</li>
+          <li>登入碼連續輸錯 5 次會鎖 10 分鐘，請稍後再試。</li>
+          <li>名單上沒有你 → 請管理人員（胡翊穜）新增。新增稽查員需要<b>管理員登入碼</b>。</li>
+          <li>要改名字、單位或換登入碼 → 點名字右側的 <kbd>⚙︎</kbd>，輸入自己目前的登入碼即可修改。刪除稽查員只有管理人員能做。</li>
+          <li>名單是所有裝置共用的，管理人員新增後，大家的手機和電腦都看得到。</li>
         </ul>
       </div>
     </div>
@@ -177,7 +189,10 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
         <h4>選這次要用的稽查單</h4>
         <p>清單裡有 12 種可用的稽查單，可用上方搜尋框打關鍵字找（例如打「飲料」）。灰色標示「建置中」的是還沒開放的。</p>
         <ul>
-          <li><b>塑膠製品這張比較特別：</b>進去要先選「本次稽查類型」（塑膠袋／塑膠類免洗餐具／各類免洗餐具／塑膠吸管），選了之後才會顯示那一種的管制對象和項目，不用看其他三種。</li>
+          <li><b>限制使用稽查記錄單（原「塑膠製品」）：</b>進去先選「類別」（購物用塑膠袋／免洗餐具／各類免洗餐具／一次用塑膠吸管），下方只會出現那一類的查核項目。</li>
+          <li>「場所類型」已合併成一份清單（政府部門、學校、量販店、飲料店、有店面餐飲業⋯⋯共 15 類），四種類別共用。</li>
+          <li>勾了「違規提供」之後，才會出現要勾選的<b>餐具種類</b>。</li>
+          <li>「內用外帶比率」直接打比例即可，例如 <span class="chip">6:4</span>。</li>
         </ul>
       </div>
     </div>
@@ -190,6 +205,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
         <ul>
           <li><b>稽查時間免手動：</b>系統會自動抓你現場第一張照片的拍攝時間當稽查時間。需要調整的話，這一頁最上面的時間欄位可以直接改。</li>
           <li><b>可以在公司先做好：</b>先把基本資料填好，按底部 <span class="btn g">暫存</span>，資料會上雲端。出門後手機登入同一位稽查員就能接著填。</li>
+          <li><b>罰則條文已內建：</b>違規處理的選項都已是資源循環推動法的條文，勾選即可，不用自己打。</li>
         </ul>
       </div>
     </div>
@@ -225,13 +241,18 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
     <div class="step">
       <div class="no">6</div>
       <div>
-        <h4>確認後產出</h4>
-        <p>核對摘要沒問題，按 <span class="btn">產出 PDF 並同步</span>。系統會做三件事：</p>
+        <h4>確認後產出，給店家掃 QR Code</h4>
+        <p>核對摘要沒問題，按 <span class="btn">產出 PDF 並同步</span>。幾秒後就會出現完成畫面：</p>
         <ul>
-          <li>把稽查單和照片合成<b>一份 PDF</b>（不會拆成兩個檔）。</li>
-          <li>上傳到雲端硬碟，照片原檔另存一個資料夾。</li>
-          <li>把這筆資料寫進 Google 試算表，供後續統計。</li>
+          <li>畫面中間有 <b>QR Code</b>，請店家用手機相機掃描，就能開啟／下載這次的稽查紀錄 PDF。要放大或用 LINE 傳連結，按 <span class="chip">放大／分享</span>。</li>
+          <li>稽查單和照片合成<b>一份 PDF</b>，可以按 <span class="btn g">⬇️ 下載 PDF</span> 存在手機裡。</li>
+          <li>上傳在<b>背景</b>進行，畫面會顯示進度：先傳 PDF 並寫入試算表，再分批上傳照片原檔，全部完成會顯示 <b>✅ 已上傳雲端並寫入彙整表</b>。</li>
+          <li><b>不用等上傳完成</b>，可以直接按 <span class="btn g">＋ 開始新的稽查</span> 做下一家，前一家會繼續在背景傳。</li>
         </ul>
+        <div class="warn" style="margin:10px 0 6px">
+          <b>上傳完成前，請不要關掉這個網頁</b>
+          切到其他 App 沒關係。不小心關掉也不會遺失，下次<b>同一位稽查員登入</b>就會自動接著傳。
+        </div>
         <p style="margin-top:8px">檔名會自動組好，例如：<br>
         <span class="chip">飲料杯-測試股份有限公司-1150723-胡翊穜.pdf</span><br>
         <span class="small">格式為「稽查單簡稱-稽查對象-日期-稽查員」。</span></p>
@@ -240,7 +261,15 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
 
   </div>
 
-  <h2>三、必拍照片一覽</h2>
+  <h2>三、給店家的電子檔（QR Code）</h2>
+  <table>
+    <tr><th>怎麼給</th><td>完成畫面直接讓店家掃；事後要再給，打開 <kbd>📁</kbd> →「已完成」→ 那一筆的 <span class="chip">QR Code</span>。也可以按「放大／分享」複製連結或用 LINE 傳。</td></tr>
+    <tr><th>有效期限</th><td>自稽查日起 <b>15 天</b>。過期後店家掃描會顯示「查閱期限已過」，雲端 PDF 的公開連結也會一併收回。</td></tr>
+    <tr><th>沒訊號時</th><td>QR Code 照樣可以先給店家掃。上傳完成前，店家看到的是「檔案上傳中」，等上傳完重新整理就能下載。</td></tr>
+    <tr><th>PDF 上有沒有</th><td>沒有。QR Code 只在手機畫面上出示，不會印在稽查單 PDF 上。</td></tr>
+  </table>
+
+  <h2>四、必拍照片一覽</h2>
   <p class="small">下表是各稽查單一定要完成的照片欄位（標 <span class="badge">必拍</span> 者）。其他欄位為選填，有拍更完整。</p>
   <table class="reqtable">
     <tr><th>稽查單</th><th>必拍項目</th></tr>
@@ -253,57 +282,61 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
     <tr><td>過度包裝</td><td>外觀</td></tr>
     <tr><td>塑膠托盤</td><td>外觀、包裝陳列現況</td></tr>
     <tr><td>乾電池</td><td>外觀、電池陳列</td></tr>
-    <tr><td>塑膠製品</td><td>店家外觀、稽查項目現況</td></tr>
+    <tr><td>限制使用（塑膠製品）</td><td>店家外觀、稽查項目現況</td></tr>
     <tr><td>PVC容器</td><td>外觀、商品陳列</td></tr>
     <tr><td>網購包裝</td><td>外箱照片、產品裝箱樣態（含緩衝材）、產品裝箱樣態（不含緩衝材）、包材陳列照片</td></tr>
   </table>
 
-  <h2>四、暫存與紀錄查詢</h2>
+  <h2>五、暫存與紀錄查詢</h2>
   <p>右上角 <kbd>📁</kbd> 打開後有兩個分頁：</p>
   <table>
-    <tr><th>暫存草稿</th><td>還沒完成的單。點「繼續」接著填。上方有 <span class="btn g">⬇︎ 下載雲端草稿到本機</span>，<b>出門前按一下</b>，之後沒訊號也開得起來。</td></tr>
-    <tr><th>已完成</th><td>做完的紀錄。可開雲端 PDF，或重新產一份 PDF。</td></tr>
+    <tr><th>暫存草稿</th><td>還沒完成的單。點「繼續」接著填。上方有 <span class="btn g">⬇︎ 下載雲端草稿到本機</span>，<b>出門前按一下</b>，之後沒訊號也開得起來。每筆會標「雲端」「已同步」或「本機」。</td></tr>
+    <tr><th>已完成</th><td>做完的紀錄。最上方會列出<b>還在上傳／等待上傳</b>的單，可按「立即重試」。其他每筆可開「雲端 PDF」、出示「QR Code」，或「重新產 PDF」。</td></tr>
   </table>
-  <p class="small">每筆會標「雲端」或「本機」，讓你分辨這筆有沒有同步上去。</p>
 
   <div class="note">
     <b>換手機、換電腦都接得上</b>
     在公司電腦建的單按過「暫存」，手機登入<b>同一位稽查員</b>就看得到，可以直接接著填。做完的紀錄也一樣，任何裝置都查得到。
   </div>
 
-  <h2>五、現場沒訊號怎麼辦</h2>
-  <p>照常用就好，填單、拍照、簽名、產 PDF 全部可以離線完成，PDF 會存到手機裡。</p>
-  <div class="warn">
-    <b>回到有訊號時要補做一件事</b>
-    離線完成的單，系統會<b>幫你保留草稿</b>。回到有網路的地方，開 <kbd>📁</kbd> → 找到那一筆 → 點「繼續」 → 再按一次 <span class="btn">產出 PDF 並同步</span>，資料才會上傳到試算表和雲端硬碟。
+  <h2>六、現場沒訊號怎麼辦</h2>
+  <p>照常用就好，填單、拍照、簽名、產 PDF、出示 QR Code 全部可以離線完成。</p>
+  <div class="note">
+    <b>不用再回頭補送</b>
+    沒訊號時完成的單，會自動排進「待上傳」。手機一恢復網路就會自動補傳（也會每 30 秒重試一次），不用再開草稿重按。想馬上傳，按完成畫面或 <kbd>📁</kbd>「已完成」裡的 <span class="chip">立即重試</span>。
   </div>
-  <p class="small">建議習慣：出門前按一次「下載雲端草稿到本機」，回辦公室前確認 📁 裡沒有還沒同步的單。</p>
+  <p class="small">建議習慣：出門前按一次「下載雲端草稿到本機」；收工前打開 <kbd>📁</kbd>「已完成」，確認最上方沒有「待上傳」的單。</p>
 
-  <h2>六、常見狀況</h2>
+  <h2>七、常見狀況</h2>
   <table>
-    <tr><th>忘記登入碼</th><td>請系統管理人員（胡翊穜）用 ⚙︎ 重設，或直接新增一組新的稽查員。</td></tr>
+    <tr><th>忘記登入碼</th><td>請管理人員（胡翊穜）用 ⚙︎ 輸入管理員登入碼後幫你重設。</td></tr>
+    <tr><th>沒網路登不進去</th><td>這台裝置還沒有連網登入過。請先到有訊號的地方登入一次，之後就能離線登入。</td></tr>
+    <tr><th>跳出「登入已逾時」</th><td>登入超過 7 天，重新輸入登入碼即可。沒傳完的資料會自動接著傳；若是按「暫存」時跳出，登入後再按一次暫存。</td></tr>
+    <tr><th>店家掃了顯示「檔案上傳中」</th><td>上傳還沒完成。請店家稍後重新整理頁面，或你先檢查完成畫面的上傳進度。</td></tr>
+    <tr><th>店家說「查閱期限已過」</th><td>已超過 15 天。請店家洽環保局，或由稽查員從 <kbd>📁</kbd>「已完成」開雲端 PDF 另行提供。</td></tr>
+    <tr><th>登出時跳出「還有 N 筆在上傳」</th><td>代表還有單沒傳完。建議等傳完再登出；若先登出，下次同一位稽查員登入會自動續傳。</td></tr>
     <tr><th>拍照拍歪了、拍錯</th><td>點照片右上角 <kbd>✕</kbd> 刪掉重拍。</td></tr>
     <tr><th>照片格用不到</th><td>非必拍的可以留空，不影響產出。</td></tr>
     <tr><th>要多拍幾張</th><td>照片頁最下面按 <span class="btn g">＋ 新增欄位</span>，可加任意張數，記得填備註說明拍的是什麼。</td></tr>
-    <tr><th>按了完成但沒同步</th><td>畫面會顯示「已在本機產出」，代表當下沒連上。照上面第五點回訊號後補送即可。</td></tr>
     <tr><th>填錯要重來</th><td>按 <span class="btn g">上一步</span> 回去改。整張要放棄就回稽查單清單重新選一張。</td></tr>
   </table>
 
   <div class="cheat">
     <h2>現場小抄</h2>
     <ol>
-      <li>登入自己的名字 → 輸入登入碼</li>
-      <li>選稽查單（塑膠製品要先選類型）</li>
+      <li>登入自己的名字 → 輸入登入碼（新裝置第一次要有網路）</li>
+      <li>選稽查單（限制使用記錄單要先選類別）</li>
       <li>填單，名稱／地點必填</li>
       <li>拍照，紅色<span class="badge">必拍</span>不能缺；拍不到就改文字說明</li>
       <li>雙方簽名，對方不簽就用「拒簽／未簽／拍店章」</li>
-      <li>按「產出 PDF 並同步」，看到 ✅ 才算完成</li>
+      <li>按「產出 PDF 並同步」→ <b>讓店家掃 QR Code</b>（15 天內有效）</li>
+      <li>直接做下一家；看到 ✅ 已上傳才算全部完成</li>
     </ol>
-    <p class="small" style="margin:10px 0 0"><b>出門前：</b>📁 按「下載雲端草稿到本機」。<b>收工前：</b>檢查 📁 沒有未同步的單。</p>
+    <p class="small" style="margin:10px 0 0"><b>出門前：</b>📁 按「下載雲端草稿到本機」。<b>收工前：</b>📁「已完成」最上方沒有「待上傳」的單。</p>
   </div>
 
   <footer>
-    嘉義市政府環境保護局　源頭減量及強化分類回收計畫　│　系統操作問題請洽計畫組　胡翊穜
+    嘉義市政府環境保護局　源頭減量及強化分類回收計畫　│　表單版本 115.09　│　系統操作問題請洽計畫組　胡翊穜
   </footer>
 
 </div>
