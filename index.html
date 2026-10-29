@@ -105,8 +105,9 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
     ① 稽查單條文已全部改為<b>資源循環推動法</b>；「限制使用稽查記錄單」改版（見第二步）。<br>
     ② 按完成後<b>馬上出現 QR Code</b>，給店家掃就能下載這次的稽查紀錄 PDF，<b>15 天內有效</b>。<br>
     ③ 上傳改成<b>背景進行</b>，不用等，可以直接做下一家；沒訊號時會自動補傳，不用再回頭開草稿重送。<br>
-    ④ PDF 字體放大為 12pt，內容多時會自動分頁。<br>
-    ⑤ 新增稽查員改由管理人員處理；登入一次可用 7 天。
+    ④ PDF 字體放大為 12pt，內容多時會自動分頁；照片頁放大照片、改用新抬頭。<br>
+    ⑤ 新增稽查員改由管理人員處理；登入一次可用 7 天。<br>
+    ⑥ 可設定<b>個人簽名檔</b>自動帶入；業者簽名新增<b>全螢幕橫向簽名</b>。
   </div>
 
   <h2>一、整體流程只有六步</h2>
@@ -178,6 +179,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
           <li>登入碼連續輸錯 5 次會鎖 10 分鐘，請稍後再試。</li>
           <li>名單上沒有你 → 請管理人員（胡翊穜）新增。新增稽查員需要<b>管理員登入碼</b>。</li>
           <li>要改名字、單位或換登入碼 → 點名字右側的 <kbd>⚙︎</kbd>，輸入自己目前的登入碼即可修改。刪除稽查員只有管理人員能做。</li>
+          <li><b>設定簽名檔（建議第一次就設好）：</b>同樣在 <kbd>⚙︎</kbd> 裡，選「上傳簽名照片」（白紙上用深色筆簽名後拍照，系統會自動去背、裁邊），或「直接簽一個」。設好後每張稽查單的稽查人員簽名都會自動帶入。</li>
           <li>名單是所有裝置共用的，管理人員新增後，大家的手機和電腦都看得到。</li>
         </ul>
       </div>
@@ -228,13 +230,15 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
       <div class="no">5</div>
       <div>
         <h4>雙方簽名</h4>
-        <p>用手指或觸控筆直接在框內簽。稽查對象那一欄，遇到狀況有三種替代方式：</p>
+        <p><b>稽查人員</b>那一欄會自動帶入你的簽名檔，顯示「已帶入預設簽名」。要現場重簽就按 <span class="chip">改用手簽</span>。</p>
+        <p><b>給業者簽名時，建議按</b> <span class="chip">⛶ 全螢幕簽名</span>：整個畫面變成大簽名板，手機直拿時會自動轉成橫向，請把手機轉橫交給對方簽，簽完按「確認」。簽得快也不會斷筆，點一下也會留下點。</p>
+        <p>稽查對象那一欄，遇到狀況有三種替代方式：</p>
         <ul>
           <li><span class="chip">拒簽</span>　對方明確拒絕簽名。</li>
           <li><span class="chip">現場人員未簽</span>　現場的人無權簽或不在。</li>
           <li><span class="chip">拍店章</span>　拍店章或發票章當憑證，照片會直接放進 PDF 的簽名欄。</li>
         </ul>
-        <p class="small" style="margin-top:6px">簽錯了按 <span class="chip">清除</span> 重簽；拍錯章按「重新簽名／改拍」換掉。</p>
+        <p class="small" style="margin-top:6px">簽錯了按 <span class="chip">清除</span> 或「清除重簽」；拍錯章按「重新簽名／改拍」換掉。</p>
       </div>
     </div>
 
@@ -328,7 +332,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-si
       <li>選稽查單（限制使用記錄單要先選類別）</li>
       <li>填單，名稱／地點必填</li>
       <li>拍照，紅色<span class="badge">必拍</span>不能缺；拍不到就改文字說明</li>
-      <li>雙方簽名，對方不簽就用「拒簽／未簽／拍店章」</li>
+      <li>稽查人員簽名自動帶入；業者用「⛶ 全螢幕簽名」，不簽就用「拒簽／未簽／拍店章」</li>
       <li>按「產出 PDF 並同步」→ <b>讓店家掃 QR Code</b>（15 天內有效）</li>
       <li>直接做下一家；看到 ✅ 已上傳才算全部完成</li>
     </ol>
